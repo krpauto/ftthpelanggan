@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mei 2023 pada 13.54
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.2.28
+-- Host: localhost
+-- Generation Time: Jan 28, 2021 at 05:41 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,215 +19,268 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ftthci3
+-- Database: `pengajuan`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `gallery`
 --
 
-CREATE TABLE `barang` (
+CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
-  `kode_barang` varchar(10) DEFAULT NULL,
-  `nama_barang` varchar(100) DEFAULT NULL,
-  `harga_beli` varchar(100) DEFAULT NULL,
-  `harga_jual` varchar(100) DEFAULT NULL,
-  `stok` int(11) DEFAULT NULL,
-  `satuan` varchar(50) DEFAULT NULL
+  `profile` text NOT NULL,
+  `s_kelurahan` varchar(225) NOT NULL,
+  `s_lpm` varchar(225) NOT NULL,
+  `s_linmas` varchar(225) NOT NULL,
+  `s_pemuda` varchar(225) NOT NULL,
+  `k_rtrw` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `gallery`
 --
 
-INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `harga_beli`, `harga_jual`, `stok`, `satuan`) VALUES
-(1, '53525585', 'Telur', '10000', '12500', 10, 'kg'),
-(2, '90598509', 'Kopi Kapal Api', '1500', '1750', 14, 'sachet'),
-(4, '33602675', 'Gula Pasir', '7500', '8000', 14, 'kg');
+INSERT INTO `gallery` (`id`, `profile`, `s_kelurahan`, `s_lpm`, `s_linmas`, `s_pemuda`, `k_rtrw`) VALUES
+(1, 'Kelurahan Pulau didirikan pada akhir tahun 1981. Kelurahan Pulau merupakan representasi rakyat daerah menjembatani antara pemerintah daerah dengan masyarakat dan mengusahakan kesepakatan maupun dukungan terhadap sistem politik secara keseluruhan maupun terhadap kebijakan spesifik tertentu.\r\nKelurahan Pulau adalah mitra pemerintah daerah dengan memberikan atau mengusahakan dukungan dan keperluan dalam rangka optimalisasi otonomi daerah dalam rangka Negara kesatuan Republik Indonesia.\r\n<br><br>\r\n       Kelurahan Pulau terletak di Kecamatan Bangkinang, Kabupaten Kampar, Provinsi Riau, dengan luas wilayah total 3.050 ha. Kelurahan Pulau secara administrative berbatasan sebelah Utara dengan Sei Jernih Kelurahan Pasir Sialang, sebelah Selatan dengan Sungai Kampar, sebelah Barat dengan Desa Sipungguk Kecamatan Salo dan sebelah Timur dengan Desa Binuang.', 'Screenshot_from_2020-09-05_21-21-46.png', 'Screenshot_from_2020-08-28_20-34-37.png', 'Screenshot_from_2020-09-12_23-55-35.png', 'girl_silhouette_lonely_164516_3840x2160.jpg', 'magic_ball_library_columns_castle_63093_1920x1080.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_toko`
+-- Table structure for table `pegawai`
 --
 
-CREATE TABLE `data_toko` (
-  `id` int(11) NOT NULL,
-  `nama_toko` varchar(80) DEFAULT NULL,
-  `nama_pemilik` varchar(80) DEFAULT NULL,
-  `no_telepon` varchar(15) DEFAULT NULL,
-  `alamat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `pegawai` (
+  `id_pegawai` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `nip` varchar(50) NOT NULL,
+  `tempat_lahir` varchar(50) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `foto` varchar(200) NOT NULL,
+  `no_hp` varchar(50) NOT NULL,
+  `jabatan` varchar(50) NOT NULL,
+  `pendidikan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `data_toko`
+-- Dumping data for table `pegawai`
 --
 
-INSERT INTO `data_toko` (`id`, `nama_toko`, `nama_pemilik`, `no_telepon`, `alamat`) VALUES
-(1, 'Toko Maju Jaya', 'Nugroho', '081299764535', 'Sidareja');
+INSERT INTO `pegawai` (`id_pegawai`, `nama`, `nip`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `foto`, `no_hp`, `jabatan`, `pendidikan`) VALUES
+(3, 'Fauzi Ihsan', '111', 'Muara Bungkal', '2016-10-10', 'Siak', 'IMG-20201007-WA0007.jpg', '08', 'Mahasiswa', 'S6'),
+(4, 'Alex', '789', 'Pku', '2016-10-10', 'Tampan', 'P_20200914_105232_HDR.jpg', '080', 'Kaur Pemerintahan', 'S10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_penjualan`
+-- Table structure for table `penduduk`
 --
 
-CREATE TABLE `detail_penjualan` (
-  `no_penjualan` varchar(20) DEFAULT NULL,
-  `nama_barang` varchar(100) DEFAULT NULL,
-  `harga_barang` varchar(20) DEFAULT NULL,
-  `jumlah_barang` int(11) DEFAULT NULL,
-  `satuan` varchar(20) DEFAULT NULL,
-  `sub_total` varchar(20) DEFAULT NULL
+CREATE TABLE `penduduk` (
+  `nik` varchar(20) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `no_hp` varchar(100) NOT NULL,
+  `tmpt_lhr` varchar(50) NOT NULL,
+  `tgl_lhr` date NOT NULL,
+  `pekerjaan` varchar(50) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `rt` int(11) NOT NULL,
+  `rw` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `detail_penjualan`
+-- Dumping data for table `penduduk`
 --
 
-INSERT INTO `detail_penjualan` (`no_penjualan`, `nama_barang`, `harga_barang`, `jumlah_barang`, `satuan`, `sub_total`) VALUES
-('PJ1584356033', 'Telur', '12500', 1, 'kg', '12500'),
-('PJ1584359090', 'Telur', '12500', 9, 'kg', '112500'),
-('PJ1584359090', 'Gula Pasir', '8000', 5, 'kg', '40000'),
-('PJ1584359090', 'Kopi Kapal Api', '1750', 5, 'sachet', '8750'),
-('PJ1584359556', 'Kopi Kapal Api', '1750', 1, 'sachet', '1750'),
-('PJ1584359556', 'Gula Pasir', '8000', 1, 'kg', '8000');
+INSERT INTO `penduduk` (`nik`, `nama`, `no_hp`, `tmpt_lhr`, `tgl_lhr`, `pekerjaan`, `alamat`, `rt`, `rw`) VALUES
+('116511', 'Rifki Ilmi', '0882443818', '', '0000-00-00', '', '', 0, 0),
+('1262332', 'Ikus', '08646757', '', '0000-00-00', '', '', 0, 0),
+('1547', 'Inggih Permono', '0987655456', 'Ujung Kulon', '1987-10-10', 'IUVDGVH', 'Jl. Inttah', 6, 6),
+('192618', 'Hengki Wibana', '0972655112', 'Durian Jatuh', '1998-10-10', 'Copet', 'Jl. enten', 1, 12),
+('197646', 'Suntel', '0846563783', '', '0000-00-00', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kasir`
+-- Table structure for table `pengajuan_surat`
 --
 
-CREATE TABLE `kasir` (
-  `id` int(11) NOT NULL,
-  `kode_kasir` varchar(10) DEFAULT NULL,
-  `nama_kasir` varchar(100) DEFAULT NULL,
-  `username_kasir` varchar(20) DEFAULT NULL,
-  `password_kasir` varchar(255) DEFAULT NULL
+CREATE TABLE `pengajuan_surat` (
+  `id` varchar(100) NOT NULL,
+  `NIK` varchar(20) NOT NULL,
+  `jenis_surat` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `file` varchar(225) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kasir`
+-- Dumping data for table `pengajuan_surat`
 --
 
-INSERT INTO `kasir` (`id`, `kode_kasir`, `nama_kasir`, `username_kasir`, `password_kasir`) VALUES
-(2, 'KASIR - 58', 'Fakhrul', 'KSR58', 'pwd_fakhrul');
+INSERT INTO `pengajuan_surat` (`id`, `NIK`, `jenis_surat`, `tanggal`, `file`, `status`) VALUES
+('SKGG-Gd86230021', '1262332  ', 'SKGG', '2021-01-24', 'SKGG600cddd411d5aAM.xlsx', '1'),
+('SKKL-d215520021', '116511', 'SKKL', '2021-01-24', 'SKKL600cdd55ae17e12.xlsx', '1'),
+('SKM-6cM8310021', '1547', 'SKM', '2021-01-23', 'SKM600c2ada17dcdoof.pdf', '5');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengguna`
+-- Table structure for table `surat_keluar`
 --
 
-CREATE TABLE `pengguna` (
-  `id` int(11) NOT NULL,
-  `kode_pengguna` varchar(10) DEFAULT NULL,
-  `nama_pengguna` varchar(100) DEFAULT NULL,
-  `username_pengguna` varchar(20) DEFAULT NULL,
-  `password_pengguna` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pengguna`
---
-
-INSERT INTO `pengguna` (`id`, `kode_pengguna`, `nama_pengguna`, `username_pengguna`, `password_pengguna`) VALUES
-(1, 'PGN17', 'Nugrohoo', 'nugrohoff', 'pwd_nugroho');
+CREATE TABLE `surat_keluar` (
+  `id_surat_keluar` int(11) NOT NULL,
+  `nama_surat_keluar` varchar(100) NOT NULL,
+  `tanggal_surat_keluar` date NOT NULL,
+  `keterangan_surat_keluar` varchar(100) NOT NULL,
+  `file_surat_keluar` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan`
+-- Table structure for table `surat_keterangan`
 --
 
-CREATE TABLE `penjualan` (
-  `id` int(11) NOT NULL,
-  `no_penjualan` varchar(20) DEFAULT NULL,
-  `nama_kasir` varchar(100) DEFAULT NULL,
-  `tgl_penjualan` varchar(20) DEFAULT NULL,
-  `jam_penjualan` varchar(20) DEFAULT NULL,
-  `total` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `surat_keterangan` (
+  `id_surat_keterangan` int(11) NOT NULL,
+  `nama_surat_keterangan` varchar(100) NOT NULL,
+  `tanggal_surat_keterangan` date NOT NULL,
+  `keterangan_surat_keterangan` varchar(100) NOT NULL,
+  `file_surat_keterangan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data untuk tabel `penjualan`
+-- Table structure for table `surat_masuk`
 --
 
-INSERT INTO `penjualan` (`id`, `no_penjualan`, `nama_kasir`, `tgl_penjualan`, `jam_penjualan`, `total`) VALUES
-(1, 'PJ1584356033', 'Nugrohoo', '16/03/2020', '17:53:53', 12500),
-(2, 'PJ1584359090', 'Nugrohoo', '16/03/2020', '18:44:50', 161250),
-(3, 'PJ1584359556', 'nugroho', '16/03/2020', '18:52:36', 9750);
+CREATE TABLE `surat_masuk` (
+  `id_surat_masuk` int(11) NOT NULL,
+  `nama_surat_masuk` varchar(100) NOT NULL,
+  `tanggal_surat_masuk` date NOT NULL,
+  `keterangan_surat_masuk` varchar(100) NOT NULL,
+  `file_surat_masuk` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `level` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
+(1, 'admin', 'admin', 'administrator'),
+(5, 'pegawai', 'pegawai', 'pegawai'),
+(7, 'fauziganteng', 'fauziganteng', 'administrator'),
+(8, 'fauziganteng1', 'fauziganteng1', 'pegawai');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `gallery`
 --
-ALTER TABLE `barang`
+ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `data_toko`
+-- Indexes for table `pegawai`
 --
-ALTER TABLE `data_toko`
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id_pegawai`);
+
+--
+-- Indexes for table `penduduk`
+--
+ALTER TABLE `penduduk`
+  ADD PRIMARY KEY (`nik`);
+
+--
+-- Indexes for table `pengajuan_surat`
+--
+ALTER TABLE `pengajuan_surat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kasir`
+-- Indexes for table `surat_keluar`
 --
-ALTER TABLE `kasir`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `surat_keluar`
+  ADD PRIMARY KEY (`id_surat_keluar`);
 
 --
--- Indeks untuk tabel `pengguna`
+-- Indexes for table `surat_keterangan`
 --
-ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `surat_keterangan`
+  ADD PRIMARY KEY (`id_surat_keterangan`);
 
 --
--- Indeks untuk tabel `penjualan`
+-- Indexes for table `surat_masuk`
 --
-ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `surat_masuk`
+  ADD PRIMARY KEY (`id_surat_masuk`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `gallery`
 --
-ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `data_toko`
---
-ALTER TABLE `data_toko`
+ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kasir`
+-- AUTO_INCREMENT for table `pegawai`
 --
-ALTER TABLE `kasir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `pegawai`
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `pengguna`
+-- AUTO_INCREMENT for table `surat_keluar`
 --
-ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `surat_keluar`
+  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan`
+-- AUTO_INCREMENT for table `surat_keterangan`
 --
-ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `surat_keterangan`
+  MODIFY `id_surat_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `surat_masuk`
+--
+ALTER TABLE `surat_masuk`
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
